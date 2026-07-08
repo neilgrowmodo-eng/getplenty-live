@@ -1,0 +1,217 @@
+<link
+  rel='stylesheet'
+  href='{{ 'p80-accordion.css' | asset_url }}'
+  media='print'
+  onload="this.media='all'"
+>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  .accordion--{{ section.id }} {
+    --accordion-title-font-size: {{ section.settings.accordion_title_font_size }}px;
+    --accordion-content-font-size: {{ section.settings.accordion_content_font_size }}px;
+    --accordion-title-color: {{ section.settings.accordion_title_color }};
+    --accordion-content-color: {{ section.settings.accordion_content_color }};
+    --accordion-title-font-family: {%- if section.settings.accordion_title_font_face == 'heading' -%}var(--font-heading-family){%- else -%}var(--font-body-family){%- endif -%};
+    --accordion-content-font-family: {%- if section.settings.accordion_content_font_face == 'heading' -%}var(--font-heading-family){%- else -%}var(--font-body-family){%- endif -%};
+  }
+
+  .accordion--{{ section.id }} .accordion__button {
+    color: var(--accordion-title-color);
+  }
+
+  .accordion--{{ section.id }} .accordion__title {
+    font-size: var(--accordion-title-font-size);
+    font-family: var(--accordion-title-font-family);
+    color: var(--accordion-title-color);
+  }
+
+  .accordion--{{ section.id }} .accordion__content {
+    font-size: var(--accordion-content-font-size);
+    font-family: var(--accordion-content-font-family);
+    color: var(--accordion-content-color);
+  }
+
+  .accordion--{{ section.id }} .accordion__content * {
+    font-size: inherit;
+    font-family: inherit;
+    color: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class='accordion accordion--{{ section.id }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding'>
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {%- when 'accordion' -%}
+        {% if block.settings.title != blank and block.settings.content != blank %}
+          <accordion-component class='accordion__item'>
+            <button
+              class='accordion__button'
+              aria-expanded='false'
+              aria-controls='accordion-content-{{ section.id }}-{{ forloop.index0 }}'
+              id='accordion-control-{{ section.id }}-{{ forloop.index0 }}'
+              data-toggle
+            >
+              <span class='accordion__title'>{{ block.settings.title }}</span>
+              <span class='accordion__icon'></span>
+            </button>
+
+            <div
+              class='accordion__content'
+              aria-hidden='true'
+              id='accordion-content-{{ section.id }}-{{ forloop.index0 }}'
+              data-content
+            >
+              {{ block.settings.content }}
+            </div>
+          </accordion-component>
+        {% endif %}
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Accordion",
+  "class": "page-width",
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Entry",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.p80-accordion.blocks.accordion.settings.title.label"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.p80-accordion.blocks.accordion.settings.content.label"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Accordion typography"
+    },
+    {
+      "type": "range",
+      "id": "accordion_title_font_size",
+      "min": 8,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion title font size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "accordion_content_font_size",
+      "min": 8,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Accordion content font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "accordion_title_color",
+      "label": "Accordion title color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "accordion_content_color",
+      "label": "Accordion content color",
+      "default": "#121212"
+    },
+    {
+      "type": "select",
+      "id": "accordion_title_font_face",
+      "label": "Accordion title font face",
+      "options": [
+        {
+          "value": "heading",
+          "label": "Heading font"
+        },
+        {
+          "value": "body",
+          "label": "Body font"
+        }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "select",
+      "id": "accordion_content_font_face",
+      "label": "Accordion content font face",
+      "options": [
+        {
+          "value": "body",
+          "label": "Body font"
+        },
+        {
+          "value": "heading",
+          "label": "Heading font"
+        }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accordion",
+      "blocks": [
+        {
+          "type": "accordion"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

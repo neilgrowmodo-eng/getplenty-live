@@ -1,0 +1,176 @@
+{{ 'section-sub-collections-menu.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.menu != blank -%}
+  {%- liquid
+    assign current_collection = collection.handle
+    for link in section.settings.menu.links
+      if link.type == 'collection_link' and link.object.handle == current_collection
+        assign sub_collections = link.links
+      endif
+      if sub_collections == blank and link.links != blank
+        assign second_level_links = link.links
+        for second_level_link in second_level_links
+          if second_level_link.type == 'collection_link' and second_level_link.object.handle == current_collection
+            assign sub_collections = second_level_link.links
+          endif
+        endfor
+      endif
+    endfor
+  -%}
+  {%- if sub_collections != blank and current_tags.size == blank -%}
+    <div class='section-sub-collections-menu color-{{ section.settings.color_scheme }} gradient'>
+      <div class='page-width'>
+        <ul class='collection-sublinks contains-card contains-card--collection contains-card--standard grid grid--7-col-desktop grid--7-col-tablet-down collection-list--13-items'>
+          {%- for link in sub_collections -%}
+            {%- liquid
+              assign link_object = link.object
+              assign card_image = ''
+              assign path_object = link.url | replace: '/collections/', '' | replace: 'collections/', '' | split: '/'
+              if link.type == 'collection_link' and path_object.size > 1 and section.blocks.size > 0
+                assign link_object = link
+                for tag in section.blocks
+                  if link.url == tag.settings.title and tag.settings.image != blank
+                    assign card_image = tag.settings.image
+                  endif
+                endfor
+              endif
+            -%}
+            <li class='collection-sublinks__item grid__item'>
+              {% render 'card-collection',
+                card_collection: link_object,
+                card_image: card_image,
+                media_aspect_ratio: 'portrait',
+                section_settings: section.settings
+              %}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.sub-collections-menu.name",
+  "class": "section section--sub-collections",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.sub-collections-menu.settings.link_list.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_typography",
+      "label": "Enable custom typography",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "title_font_face",
+      "label": "Title font face",
+      "options": [
+        { "value": "heading", "label": "Heading font" },
+        { "value": "body", "label": "Body font" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "heading_px",
+      "min": 10,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading font size (px)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Text positioning"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_text_positioning",
+      "label": "Enable custom text positioning",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "text_horizontal_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "text_vertical_alignment",
+      "label": "Text vertical alignment",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "50%", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_custom_text_vertical_alignment",
+      "label": "Enable flexible vertical alignment",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "custom_text_vertical_alignment_offset",
+      "min": 0,
+      "max": 80,
+      "step": 1,
+      "label": "Custom vertical alignment offset (%)",
+      "default": 20,
+      "visible_if": "{{section.settings.enable_custom_text_vertical_alignment }}"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tag_filter",
+      "name": "t:sections.sub-collections-menu.blocks.tag_filter.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "info": "t:sections.sub-collections-menu.blocks.tag_filter.settings.title.info",
+          "placeholder": "/collection/tops/shirts",
+          "label": "t:sections.sub-collections-menu.blocks.tag_filter.settings.title.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.sub-collections-menu.blocks.tag_filter.settings.image.label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
