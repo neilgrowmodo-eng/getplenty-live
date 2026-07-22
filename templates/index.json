@@ -9,34 +9,23 @@
  */
 {
   "sections": {
-    "p80_image_banner_wUqpXb": {
-      "type": "p80-image-banner",
-      "name": "t:sections.p80-image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/Plenty_T2SumSale_26.06.24-07.07_WebsiteHP_Skinny_Desktop.jpg",
-        "image_mobile": "shopify://shop_images/Plenty_T2SumSale_26.06.24-07.07_WebsiteHP_Skinny_Mobile.jpg",
-        "link_url": "shopify://collections/all-sale",
-        "margin_bottom": 0,
-        "color_scheme": ""
-      }
-    },
     "p80_multi_image_banner_WzjjpM": {
       "type": "p80-multi-image-banner",
       "blocks": {
         "image_jHRhCz": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/6_b691f9b2-d444-4d6c-9289-3d6f7f33acc1.jpg",
-            "mobile_image": "shopify://shop_images/9.jpg",
-            "link_url": "shopify://collections/womens-sale"
+            "image": "shopify://shop_images/15_6ec8a93a-f962-4930-aa1f-d561d156f0e8.jpg",
+            "mobile_image": "shopify://shop_images/15-mobile.jpg",
+            "link_url": "shopify://collections/shop-womens"
           }
         },
         "image_LtNJmy": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/7_c1b9f875-067d-4c32-933d-082ef5cb7d57.jpg",
-            "mobile_image": "shopify://shop_images/10.jpg",
-            "link_url": "shopify://collections/mens-sale"
+            "image": "shopify://shop_images/14_2c68b1d9-1698-4364-8bc6-e9c78fca07f7.jpg",
+            "mobile_image": "shopify://shop_images/16-mobile.jpg",
+            "link_url": "shopify://collections/shop-mens"
           }
         }
       },
@@ -46,90 +35,57 @@
       ],
       "name": "t:sections.p80-multi-image-banner.presets.name",
       "settings": {
-        "margin_bottom": 20,
+        "margin_bottom": 0,
         "color_scheme": ""
       }
     },
-    "multicolumn_Y4EUQW": {
-      "type": "multicolumn",
+    "p80_image_banner_wUqpXb": {
+      "type": "p80-image-banner",
+      "name": "t:sections.p80-image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Skinny_Desktop.jpg",
+        "image_mobile": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Mobile.jpg",
+        "link_url": "shopify://collections/all-sale",
+        "margin_bottom": 0,
+        "color_scheme": ""
+      }
+    },
+    "p80_multi_image_banner_prnVRe": {
+      "type": "p80-multi-image-banner",
       "blocks": {
-        "column_xUBY8Q": {
-          "type": "column",
+        "image_Q9tJiH": {
+          "type": "image",
           "settings": {
-            "image": "shopify://shop_images/MIMI_f28bc516-51d7-43b8-87ec-bdc5202bf2ef.png",
-            "title": "",
-            "text": "",
-            "link_label": "Women: Tops",
-            "link": "shopify://collections/womens-tops"
+            "image": "shopify://shop_images/18_a33e0cb6-d9f0-4bcd-9c05-7a7216974136.jpg",
+            "mobile_image": "shopify://shop_images/17-mobile.jpg",
+            "link_url": "https://www.getplenty.com/a/search/capsule-wardrobe"
           }
         },
-        "column_EtCz3N": {
-          "type": "column",
+        "image_JaiLTm": {
+          "type": "image",
           "settings": {
-            "image": "shopify://shop_images/rhythm-worn-path-textured-linen-short-oak-front.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "Men: Bottoms",
-            "link": "shopify://collections/mens-bottoms"
+            "image": "shopify://shop_images/16_723b5582-4cc1-4a44-a244-5b02f27225c0.jpg",
+            "mobile_image": "shopify://shop_images/18-mobile.jpg",
+            "link_url": "shopify://collections/all-best-sellers"
           }
         },
-        "column_nPzpbh": {
-          "type": "column",
+        "image_dWeRJn": {
+          "type": "image",
           "settings": {
-            "image": "shopify://shop_images/LIANA.png",
-            "title": "",
-            "text": "",
-            "link_label": "Women: Dresses",
-            "link": "shopify://collections/womens-dresses"
-          }
-        },
-        "column_xkhcCD": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/levis-dawson-pique-short-sleve-shirt-henderson-stripe-front.jpg",
-            "title": "",
-            "text": "",
-            "link_label": "Men: Tops",
-            "link": "shopify://collections/mens-tops"
+            "image": "shopify://shop_images/17_7d5202dc-e299-4190-9afc-4ccad6bef979.jpg",
+            "mobile_image": "shopify://shop_images/19-mobile.jpg",
+            "link_url": "shopify://collections/bags"
           }
         }
       },
       "block_order": [
-        "column_xUBY8Q",
-        "column_EtCz3N",
-        "column_nPzpbh",
-        "column_xkhcCD"
+        "image_Q9tJiH",
+        "image_JaiLTm",
+        "image_dWeRJn"
       ],
-      "name": "t:sections.multicolumn.presets.name",
+      "name": "t:sections.p80-multi-image-banner.presets.name",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 4,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 0,
-        "padding_bottom": 20,
-        "heading_font_override": "global",
-        "heading_scale_override": 100,
-        "body_font_override": "global",
-        "body_scale_override": 100
-      }
-    },
-    "p80_image_banner_bLfVGQ": {
-      "type": "p80-image-banner",
-      "name": "t:sections.p80-image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/for-the-game-banner-desktop.jpg",
-        "image_mobile": "shopify://shop_images/Multi-Column_Homepage_Template_Mobile_1.jpg",
-        "link_url": "shopify://collections/for-the-game",
-        "margin_bottom": 20,
+        "margin_bottom": 50,
         "color_scheme": ""
       }
     },
@@ -226,10 +182,9 @@
     }
   },
   "order": [
-    "p80_image_banner_wUqpXb",
     "p80_multi_image_banner_WzjjpM",
-    "multicolumn_Y4EUQW",
-    "p80_image_banner_bLfVGQ",
+    "p80_image_banner_wUqpXb",
+    "p80_multi_image_banner_prnVRe",
     "multicolumn_PYfjQk",
     "rich_text_MJHDKF"
   ]

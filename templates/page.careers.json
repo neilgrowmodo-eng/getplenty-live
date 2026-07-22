@@ -31,7 +31,7 @@
           "type": "entry",
           "settings": {
             "title": "Warehouse (Vancouver)",
-            "text": "<p><a href=\"https://www.getplenty.com/pages/hiring-warehouse-sale\" title=\"Hiring - Warehouse Sale\">Warehouse Sale Support</a></p>"
+            "text": "<p>Please check back in the future</p>"
           }
         },
         "75315299-4952-4583-a520-87c2b3450802": {
@@ -53,7 +53,7 @@
           "type": "entry",
           "settings": {
             "title": "Kitsilano",
-            "text": "<p><a href=\"/pages/stylist\" title=\"Stylist\">Stylist</a> (part-time)</p><p><a href=\"/pages/assistant-store-manager\" title=\"Assistant Store Manager\">Assistant Store Manager</a> (full-time)</p>"
+            "text": "<p><a href=\"/pages/stylist\" title=\"Stylist\">Stylist</a> (part-time)</p>"
           }
         },
         "5f59172e-bcdc-4cf3-847d-804180102c47": {
@@ -67,14 +67,14 @@
           "type": "entry",
           "settings": {
             "title": "Metrotown",
-            "text": "<p><a href=\"/pages/assistant-store-manager\" title=\"Assistant Store Manager\">Assistant Store Manager</a></p>"
+            "text": "<p>Please check back in the future</p>"
           }
         },
         "67ba933f-ff8d-4cd4-8242-cf9040647ec0": {
           "type": "entry",
           "settings": {
             "title": "Park Royal",
-            "text": "<p><a href=\"/pages/manager-on-duty\" title=\"Manager On Duty (MOD)\">Manager on Duty </a>(Part Time or Full Time) </p><p>Stock Manager</p>"
+            "text": "<p><a href=\"/pages/manager-on-duty\" title=\"Manager On Duty (MOD)\">Manager on Duty </a>(Part Time or Full Time) </p>"
           }
         },
         "53072f48-8e94-4882-9ad4-bbf6e8537e8d": {
@@ -95,7 +95,7 @@
           "type": "entry",
           "settings": {
             "title": "Willowbrook",
-            "text": "<p><a href=\"/pages/assistant-store-manager\" title=\"Assistant Store Manager\">Assistant Store Manager (</a>Full Time) </p><p><a href=\"/pages/manager-on-duty\" title=\"Manager On Duty (MOD)\">Manager on Duty </a>(Part Time or Full Time) </p><p><a href=\"/pages/stylist\" title=\"Stylist\">Stylist</a> (Part Time)</p>"
+            "text": "<p><a href=\"/pages/stylist\" title=\"Stylist\">Stylist</a> (Part Time)</p>"
           }
         }
       },
