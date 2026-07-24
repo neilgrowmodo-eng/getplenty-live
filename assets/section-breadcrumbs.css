@@ -25,6 +25,8 @@
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
 }
 
 .breadcrumbs__item {
@@ -68,4 +70,10 @@
 .breadcrumbs__link[aria-current="page"]:hover,
 .breadcrumbs__link[aria-current="page"]:focus {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 749px) {
+    .breadcrumbs-wrapper {
+        position: relative;
+    }
 }

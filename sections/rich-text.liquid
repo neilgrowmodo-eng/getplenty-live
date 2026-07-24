@@ -18,9 +18,34 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  {%- unless section.settings.heading_font_override == 'global' -%}
+    #RichText-{{ section.id }} {
+      {%- if section.settings.heading_font_override == 'canopee' -%}
+        --font-heading-family: 'Canopee', sans-serif;
+      {%- elsif section.settings.heading_font_override == 'caslon' -%}
+        --font-heading-family: 'Caslon Ionic', serif;
+      {%- endif -%}
+    }
+  {%- endunless -%}
+
+  {%- unless section.settings.body_font_override == 'global' -%}
+    #RichText-{{ section.id }} {
+      {%- if section.settings.body_font_override == 'canopee' -%}
+        --font-body-family: 'Canopee', sans-serif;
+      {%- elsif section.settings.body_font_override == 'caslon' -%}
+        --font-body-family: 'Caslon Ionic', serif;
+      {%- endif -%}
+    }
+  {%- endunless -%}
+
+  #RichText-{{ section.id }} {
+    --font-heading-scale: {{ section.settings.heading_scale_override | divided_by: 100.0 }};
+    --font-body-scale: {{ section.settings.body_scale_override | divided_by: 100.0 }};
+  }
 {%- endstyle -%}
 
-<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+<div id="RichText-{{ section.id }}" class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
   <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
@@ -106,6 +131,52 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Section Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_override",
+      "label": "Heading font",
+      "options": [
+        { "value": "global", "label": "Use global setting" },
+        { "value": "canopee", "label": "Canopee (custom)" },
+        { "value": "caslon", "label": "Caslon Ionic (custom)" }
+      ],
+      "default": "global"
+    },
+    {
+      "type": "range",
+      "id": "heading_scale_override",
+      "min": 75,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "t:settings_schema.typography.settings.heading_scale.label",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "body_font_override",
+      "label": "Body font",
+      "options": [
+        { "value": "global", "label": "Use global setting" },
+        { "value": "canopee", "label": "Canopee (custom)" },
+        { "value": "caslon", "label": "Caslon Ionic (custom)" }
+      ],
+      "default": "global"
+    },
+    {
+      "type": "range",
+      "id": "body_scale_override",
+      "min": 75,
+      "max": 130,
+      "step": 5,
+      "unit": "%",
+      "label": "t:settings_schema.typography.settings.body_scale.label",
+      "default": 100
     },
     {
       "type": "checkbox",

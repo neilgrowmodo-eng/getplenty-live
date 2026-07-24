@@ -1056,11 +1056,11 @@
             "settings": {
                 "image": {
                     "label": "Image",
-                    "info": "1800 x 900px .jpg recommended"
+                    "info": "Recommended image size: 1800 × 900px (.jpg) if using a single image for this banner. If two images are uploaded, this image will be used for screens under 750px wide."
                 },
                 "image_2": {
                     "label": "Second image",
-                    "info": "1800 x 900px .jpg recommended. This image will display when the screen width is under 750px."
+                    "info": "Recommended image size: 1800 × 900px (.jpg) if using a single image for this banner."
                 },
                 "image_overlay_opacity": {
                     "label": "Image overlay opacity"

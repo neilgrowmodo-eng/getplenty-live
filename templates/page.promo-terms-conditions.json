@@ -43,7 +43,6 @@
       ],
       "disabled": true,
       "settings": {
-        "color_scheme": "",
         "padding_top": 96,
         "padding_bottom": 96
       }
@@ -66,7 +65,7 @@
         "text_TaieVx": {
           "type": "text",
           "settings": {
-            "text": "<p><em><strong>Buy or Cry</strong></em></p><p><em>Offer valid online and in-store. Discount cannot be combined with any other offer. Prices are as marked. Offer not valid on previous purchases or gift cards. All sale items purchased online under 50% off are applicable for exchange or store credit only. Sale items purchased online greater than 50% off or marked ‘final sale’ are a final sale - no returns or exchanges allowed. All sale items purchased in-store are a final sale - no returns or exchanges allowed. Some exclusions apply.</em></p>"
+            "text": "<p><strong>Warp & Weft GWP</strong></p><p><em>Purchase two pairs of Warp & Weft jeans, and receive a free tote bag. Offer is valid online and in-store. Cannot be combined with past purchases. Offer valid while supplies last. Tote bag will be automatically added to cart.</em></p><p><strong>JJXX Giant Tote GWP</strong></p><p><em>Offer is valid online and in-store. Cannot be combined with past purchases. Offer valid while supplies last. Tote bag will be automatically added to cart.</em></p>"
           }
         }
       },

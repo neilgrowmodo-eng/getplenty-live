@@ -9,23 +9,34 @@
  */
 {
   "sections": {
+    "p80_image_banner_wUqpXb": {
+      "type": "p80-image-banner",
+      "name": "t:sections.p80-image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Desktop.jpg",
+        "image_mobile": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Mobile.jpg",
+        "link_url": "shopify://collections/all-sale",
+        "margin_bottom": 0,
+        "color_scheme": ""
+      }
+    },
     "p80_multi_image_banner_WzjjpM": {
       "type": "p80-multi-image-banner",
       "blocks": {
         "image_jHRhCz": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/15_6ec8a93a-f962-4930-aa1f-d561d156f0e8.jpg",
-            "mobile_image": "shopify://shop_images/15-mobile.jpg",
-            "link_url": "shopify://collections/shop-womens"
+            "image": "shopify://shop_images/Multicolumn_Mobile_1.jpg",
+            "mobile_image": "shopify://shop_images/Multicolumn_Desktop_1.jpg",
+            "link_url": "shopify://collections/womens-sale"
           }
         },
         "image_LtNJmy": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/14_2c68b1d9-1698-4364-8bc6-e9c78fca07f7.jpg",
-            "mobile_image": "shopify://shop_images/16-mobile.jpg",
-            "link_url": "shopify://collections/shop-mens"
+            "image": "shopify://shop_images/Multicolumn_Mobile_2.jpg",
+            "mobile_image": "shopify://shop_images/Multicolumn_Desktop_2.jpg",
+            "link_url": "shopify://collections/mens-sale"
           }
         }
       },
@@ -35,57 +46,90 @@
       ],
       "name": "t:sections.p80-multi-image-banner.presets.name",
       "settings": {
-        "margin_bottom": 0,
+        "margin_bottom": 20,
         "color_scheme": ""
       }
     },
-    "p80_image_banner_wUqpXb": {
-      "type": "p80-image-banner",
-      "name": "t:sections.p80-image-banner.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Skinny_Desktop.jpg",
-        "image_mobile": "shopify://shop_images/Plenty_T3SumSale_26.07.08-TBD_WebsiteHP_Mobile.jpg",
-        "link_url": "shopify://collections/all-sale",
-        "margin_bottom": 0,
-        "color_scheme": ""
-      }
-    },
-    "p80_multi_image_banner_prnVRe": {
-      "type": "p80-multi-image-banner",
+    "multicolumn_Y4EUQW": {
+      "type": "multicolumn",
       "blocks": {
-        "image_Q9tJiH": {
-          "type": "image",
+        "column_xUBY8Q": {
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/18_a33e0cb6-d9f0-4bcd-9c05-7a7216974136.jpg",
-            "mobile_image": "shopify://shop_images/17-mobile.jpg",
-            "link_url": "https://www.getplenty.com/a/search/capsule-wardrobe"
+            "image": "shopify://shop_images/CLARE.png",
+            "title": "",
+            "text": "",
+            "link_label": "Women: Tops",
+            "link": "shopify://collections/womens-tops"
           }
         },
-        "image_JaiLTm": {
-          "type": "image",
+        "column_EtCz3N": {
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/16_723b5582-4cc1-4a44-a244-5b02f27225c0.jpg",
-            "mobile_image": "shopify://shop_images/18-mobile.jpg",
-            "link_url": "shopify://collections/all-best-sellers"
+            "image": "shopify://shop_images/MALIKA_3.png",
+            "title": "",
+            "text": "",
+            "link_label": "Women: Bottoms",
+            "link": "shopify://collections/womens-bottoms"
           }
         },
-        "image_dWeRJn": {
-          "type": "image",
+        "column_xkhcCD": {
+          "type": "column",
           "settings": {
-            "image": "shopify://shop_images/17_7d5202dc-e299-4190-9afc-4ccad6bef979.jpg",
-            "mobile_image": "shopify://shop_images/19-mobile.jpg",
-            "link_url": "shopify://collections/bags"
+            "image": "shopify://shop_images/selected-clay-short-sleeve-shirt-vetiver-front.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "Men: Tops",
+            "link": "shopify://collections/mens-tops"
+          }
+        },
+        "column_nPzpbh": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/only-and-sons-carl-brown-denim-shorts-front.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "Men: Bottoms",
+            "link": "shopify://collections/mens-bottoms"
           }
         }
       },
       "block_order": [
-        "image_Q9tJiH",
-        "image_JaiLTm",
-        "image_dWeRJn"
+        "column_xUBY8Q",
+        "column_EtCz3N",
+        "column_xkhcCD",
+        "column_nPzpbh"
       ],
-      "name": "t:sections.p80-multi-image-banner.presets.name",
+      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "margin_bottom": 50,
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 20,
+        "heading_font_override": "global",
+        "heading_scale_override": 100,
+        "body_font_override": "global",
+        "body_scale_override": 100
+      }
+    },
+    "p80_image_banner_bLfVGQ": {
+      "type": "p80-image-banner",
+      "name": "t:sections.p80-image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Homepage_Banner_Desktop_2_a7351b27-b80c-489a-a0ca-2b7387ae4a85.jpg",
+        "image_mobile": "shopify://shop_images/Multi-Column_Homepage_Template_Vertical.jpg",
+        "link_url": "shopify://blogs/journal/meet-flori-flora-fleurs",
+        "margin_bottom": 20,
         "color_scheme": ""
       }
     },
@@ -179,13 +223,81 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "image_banner_Ay79iF": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_f6CRfy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "custom_heading_positioning": true,
+            "heading_alignment": "center",
+            "heading_align_item_position": "flex-start",
+            "heading_alignment_mobile": "left",
+            "heading_align_item_position_mobile": "flex-start"
+          }
+        },
+        "text_PqwwGT": {
+          "type": "text",
+          "settings": {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            "custom_text_positioning": true,
+            "text_alignment": "center",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "buttons_mA8P4L": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "enable_custom_button_styles": false,
+            "button_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_outline_color": "#ffffff",
+            "button_border_width": 0,
+            "button_color_2": "#000000",
+            "button_text_color_2": "#ffffff",
+            "button_outline_color_2": "#000000",
+            "button_border_width_2": 0,
+            "button_alignment": "center",
+            "button_alignment_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_f6CRfy",
+        "text_PqwwGT",
+        "buttons_mA8P4L"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/z-supply-daily-denim-knit-cardigan-ocean-air-indigo-fabric.jpg",
+        "image_2": "shopify://shop_images/z-supply-daily-denim-knit-cardigan-ocean-air-indigo-model-front-detail.jpg",
+        "image_overlay_opacity": 0,
+        "desktop_content_position": "middle-center",
+        "stack_images_on_mobile": true,
+        "color_scheme": "scheme-5",
+        "heading_font_override": "global",
+        "heading_scale_override": 100,
+        "body_font_override": "global",
+        "body_scale_override": 100
+      }
     }
   },
   "order": [
-    "p80_multi_image_banner_WzjjpM",
     "p80_image_banner_wUqpXb",
-    "p80_multi_image_banner_prnVRe",
+    "p80_multi_image_banner_WzjjpM",
+    "multicolumn_Y4EUQW",
+    "p80_image_banner_bLfVGQ",
     "multicolumn_PYfjQk",
-    "rich_text_MJHDKF"
+    "rich_text_MJHDKF",
+    "image_banner_Ay79iF"
   ]
 }

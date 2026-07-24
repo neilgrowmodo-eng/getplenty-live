@@ -124,6 +124,11 @@
   #customTextPositioning.card__content.text_b-r {
     text-align: right;
   }
+  {% if section_settings.text_under_image %}
+    .card--title-below .full-unstyled-link {
+      color: {{ section_settings.under_image_text_color }} !important;
+    }
+  {% endif %}
 {% endstyle %}
 
 <div class="card-wrapper animate-arrow {% if wrapper_class and wrapper_class != 'none' %}{{ wrapper_class }}{% else %}collection-card-wrapper{% endif %}">
@@ -132,7 +137,8 @@
     {% if featured_image %} card--media{% else %} card--text{% endif %}
     {% if card_style == 'card' %} color-{{ card_color_scheme }} gradient{% endif %}
     {% if extend_height %} card--extend-height{% endif %}
-    {% if featured_image == nil and card_style == 'card' %} ratio{% endif %}"
+    {% if featured_image == nil and card_style == 'card' %} ratio{% endif %}
+    {% if section_settings.text_under_image %} card--title-below{% endif %}"
     style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
   >
     <div class="card__inner {% if card_style == 'standard' %}color-{{ card_color_scheme }} gradient{% endif %}{% if featured_image or card_style == 'standard' %} ratio{% endif %}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
@@ -187,7 +193,7 @@
         </div>   
       </div>
     </div>
-    {% if card_style == 'card' or featured_image %} 
+    {% if card_style == 'card' or featured_image or section_settings.text_under_image %} 
       <div {% if section_settings.enable_custom_text_positioning %} id="customTextPositioning"{% endif %} class="card__content {{ css_value }}">
         <div class="card__information">
           <h3 class="card__heading">

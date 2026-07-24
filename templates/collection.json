@@ -859,18 +859,19 @@
         "49dc11d2-7094-49cc-a348-f1fee8196065",
         "tag_filter_mQk6di"
       ],
-      "disabled": true,
       "settings": {
         "menu": "main-menu-2",
         "color_scheme": "",
-        "enable_custom_typography": false,
-        "title_font_face": "heading",
+        "enable_custom_typography": true,
+        "title_font_face": "body",
         "text_color": "#111111",
-        "heading_px": 24,
-        "enable_custom_text_positioning": false,
+        "heading_px": 12,
+        "enable_custom_text_positioning": true,
         "text_horizontal_alignment": "center",
         "text_vertical_alignment": "top",
         "enable_custom_text_vertical_alignment": false,
+        "text_under_image": true,
+        "under_image_text_color": "#010203",
         "custom_text_vertical_alignment_offset": 24
       }
     },
@@ -922,6 +923,10 @@
         "desktop_content_position": "left",
         "content_alignment": "left",
         "color_scheme": "background-1",
+        "heading_font_override": "global",
+        "heading_scale_override": 100,
+        "body_font_override": "global",
+        "body_scale_override": 100,
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 40

@@ -1729,13 +1729,18 @@ a.product__text {
   }
 
   .thumbnail_slider-main .slider-counter {
-    bottom: 2.2rem
+    bottom: 2.2rem;
+    transform: translateY(55px);
   }
 
   .thumbnail_slider-main .slider-counter__link {
     margin-left: .5rem;
     margin-right: .5rem;
   }
+
+  .product__info-container {
+    padding-top: 3rem;
+  } 
 }
 
 .custom-bnpl-popover {

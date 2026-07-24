@@ -176,6 +176,10 @@
   function getDiscountData(salePrice, compareAtPrice, cartItem) {
     const discountPercent = getDiscountPercent(salePrice, compareAtPrice);
     if (discountPercent == null) return null;
+    
+    if (hasWelcomeDiscountCode()) {
+      return null;
+    }
 
     const message = getMessageForDiscountPercent(discountPercent, cartItem);
     if (!message) return null;
