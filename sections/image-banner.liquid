@@ -33,15 +33,6 @@
     }
   {%- endunless -%}
 
-  {%- unless section.settings.body_font_override == 'global' -%}
-    #Banner-{{ section.id }} {
-      {%- if section.settings.body_font_override == 'canopee' -%}
-        --font-body-family: 'Canopee', sans-serif;
-      {%- elsif section.settings.body_font_override == 'caslon' -%}
-        --font-body-family: 'Caslon Ionic', serif;
-      {%- endif -%}
-    }
-  {%- endunless -%}
 
   #Banner-{{ section.id }} {
     --font-heading-scale: {{ section.settings.heading_scale_override | divided_by: 100.0 }};
@@ -51,6 +42,14 @@
   /* Ensure banner text uses the local --font-body-scale instead of fixed rems */
   #Banner-{{ section.id }} .banner__text {
     font-size: calc(var(--font-body-base) * var(--font-body-scale));
+  }
+
+  #Banner-{{ section.id }} .banner__text span {
+    {%- if section.settings.body_font_override == 'canopee' -%}
+      font-family: 'Canopee', sans-serif;
+    {%- elsif section.settings.body_font_override == 'caslon' -%}
+      font-family: 'Caslon Ionic', serif;
+    {%- endif -%}
   }
 
   @media screen and (min-width: 768px) {
@@ -94,7 +93,7 @@
     </div>
   {%- endif -%}
   {%- if section.settings.image_2 != blank -%}
-    <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %} second-image">
+  <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %} second-image">
       {%-liquid
         assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
         if section.settings.image != blank
@@ -119,14 +118,40 @@
       }}
     </div>
   {%- endif -%}
-  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width">
+  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width blocks_container">
     {%- assign scheme = section.settings.color_scheme -%}
-    <div class="banner__box content-container content-container--full-width-mobile color-{{ scheme }}" style="--color-foreground: {{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }}; --color-button: {{ scheme.settings.button.red }}, {{ scheme.settings.button.green }}, {{ scheme.settings.button.blue }}; --color-button-text: {{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }}; color: rgb(var(--color-foreground)); background-color: transparent;">
+    {% assign section_layout_class = '' %}
+
+      {% if section.blocks.size == 1 %}
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'buttons' %}
+              {% assign section_layout_class = 'section--button-only' %}
+            {% when 'heading' %}
+              {% assign section_layout_class = 'section--heading-only' %}
+            {% when 'text' %}
+              {% assign section_layout_class = 'section--text-only' %}
+          {% endcase %}
+        {% endfor %}
+      {% endif %}
+
+      {% if section.blocks.size == 0 and section.settings.stack_images_on_mobile %}
+        {% style %}
+        @media screen and (max-width: 750px) {
+          #Banner-{{ section.id }} .banner__media.media.banner__media-half,
+          #Banner-{{ section.id }} .banner__media.media.banner__media-half img {
+            position: relative;
+          }
+        }
+        {% endstyle %}
+      {% endif %}
+
+    <div class="banner__box content-container content-container--full-width-mobile color-{{ scheme }} {{ section_layout_class }}" style="--color-foreground: {{ scheme.settings.text.red }}, {{ scheme.settings.text.green }}, {{ scheme.settings.text.blue }}; --color-button: {{ scheme.settings.button.red }}, {{ scheme.settings.button.green }}, {{ scheme.settings.button.blue }}; --color-button-text: {{ scheme.settings.button_label.red }}, {{ scheme.settings.button_label.green }}, {{ scheme.settings.button_label.blue }}; color: rgb(var(--color-foreground)); background-color: transparent;">
+
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
             {% style %}
-
               {% if block.settings.custom_heading_positioning %}
                 #Banner-{{ section.id }} .banner__heading.custom-heading-positioning {
                   text-align: {{ block.settings.heading_alignment }};
@@ -134,6 +159,13 @@
                   display: flex;
                   justify-content: {{ block.settings.heading_alignment }};
                   align-items: {{ block.settings.heading_align_item_position }};
+                }
+
+                @media screen and (min-width: 750px) {
+                  #Banner-{{ section.id }} .banner__box.section--heading-only {
+                    max-width: 500px;
+                    width: 100%;
+                  }
                 }
 
                 @media screen and (max-width: 749px) {
@@ -146,6 +178,43 @@
                   }
                 }
               {% endif %}
+
+              {% unless section.settings.stack_images_on_mobile %}
+                @media screen and (max-width: 767px) and (min-width: 750px) {
+                  #Banner-{{ section.id }} .banner__box {
+                    max-width: none;
+                  }
+                }
+
+              {% endunless %}
+              {% if section.settings.stack_images_on_mobile %}
+                @media screen and (max-width: 767px) and (min-width: 750px) {
+                  .banner__media-half:after {
+                    position: absolute;
+                  }
+
+                  #Banner-{{ section.id }} .banner__box {
+                    max-width: none;
+                  }
+
+                  .banner__content.banner__content--middle-center.page-width.blocks_container {
+                    position: absolute;
+                    height: 100%;
+                  }
+
+                  .banner--large:not(.banner--adapt) {
+                    min-height: auto !important;
+                  }
+
+                  .banner__media.media.banner__media-half.first-image {
+                    height: fit-content !important;
+                  }
+
+                  .banner__media.media.banner__media-half.second-image {
+                    height: fit-content !important;
+                  }
+                }
+              {% endif  %}
             {% endstyle %}
             <h2 class="banner__heading {{ block.settings.heading_size }} {% if block.settings.custom_heading_positioning %}custom-heading-positioning{% endif %}" {{ block.shopify_attributes }}>
               <span>{{ block.settings.heading | newline_to_br }}</span>
@@ -156,6 +225,13 @@
             </div>
             {% if block.settings.custom_text_positioning %}
               <style>
+                {% if section_layout_class == 'section--text-only' %}
+                  .banner__content .banner__box.content-container.section--text-only {
+                    display: flex;
+                    width: 100%;
+                    justify-content: {{ block.settings.text_vertical_alignment }};
+                  }
+                {% endif %}
                 #Banner-{{ section.id }} .banner__text.body.hide--on-mobile {
                   text-align: {{ block.settings.text_alignment }};
                   width: 100%;
@@ -181,6 +257,15 @@
 
             </div>
             <style>
+
+              {% if section_layout_class == 'section--button-only' %}
+                .banner__box.content-container.section--button-only {
+                  display: flex;
+                  width: 100%;
+                  justify-content: {{ block.settings.button_vertical_alignment }};
+                }
+              {% endif %}
+
               {% if block.settings.enable_custom_button_styles == true %}
                 
                 #Banner-{{ section.id }} .banner__box .button_number_1 {
@@ -338,6 +423,13 @@
       "label": "t:sections.image-banner.settings.image_2.label",
       "info": "t:sections.image-banner.settings.image_2.info"
     },
+      {
+      "type": "checkbox",
+      "id": "stack_images_on_mobile",
+      "default": true,
+      "label": "t:sections.image-banner.settings.stack_images_on_mobile.label",
+      "visible_if": "{{ section.settings.image_2 != blank }}"
+    },
     {
       "type": "range",
       "id": "image_overlay_opacity",
@@ -367,36 +459,6 @@
       ],
       "default": "middle-center",
       "label": "t:sections.image-banner.settings.desktop_content_position.label"
-    },
-    // {
-    //   "type": "header",
-    //   "content": "t:sections.image-banner.settings.header.content"
-    // },
-    // {
-    //   "type": "select",
-    //   "id": "mobile_content_alignment",
-    //   "options": [
-    //     {
-    //       "value": "left",
-    //       "label": "t:sections.image-banner.settings.mobile_content_alignment.options__1.label"
-    //     },
-    //     {
-    //       "value": "center",
-    //       "label": "t:sections.image-banner.settings.mobile_content_alignment.options__2.label"
-    //     },
-    //     {
-    //       "value": "right",
-    //       "label": "t:sections.image-banner.settings.mobile_content_alignment.options__3.label"
-    //     }
-    //   ],
-    //   "default": "center",
-    //   "label": "t:sections.image-banner.settings.mobile_content_alignment.label"
-    // },
-    {
-      "type": "checkbox",
-      "id": "stack_images_on_mobile",
-      "default": true,
-      "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
     },
     {
       "type": "color_scheme",
@@ -569,7 +631,25 @@
             { "value": "right", "label": "Right" }
           ],
           "default": "center",
-          "label": "Text alignment (desktop)"
+          "label": "Text horizontal alignment (desktop)"
+        },
+        {
+          "type": "select",
+          "id": "text_vertical_alignment",
+          "options": [
+            { "value": "flex-start",
+              "label": "Top"
+            },
+            { "value": "center",
+              "label": "Center"
+            },
+            { "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "flex-start",
+          "label": "Text vertical alignment",
+          "info": "Controls the vertical positioning of the text. Only applies when the section contains only text and no heading or buttons."
         },
         {
           "type": "select",
@@ -580,7 +660,7 @@
             { "value": "right", "label": "Right" }
           ],
           "default": "center",
-          "label": "Text alignment (mobile)"
+          "label": "Text horizontal alignment (mobile)"
         }
       ]
     },
@@ -727,7 +807,25 @@
             }
           ],
           "default": "center",
-          "label": "Button alignment"
+          "label": "Button horizontal alignment"
+        },
+        {
+          "type": "select",
+          "id": "button_vertical_alignment",
+          "options": [
+            { "value": "flex-start",
+              "label": "Top"
+            },
+            { "value": "center",
+              "label": "Center"
+            },
+            { "value": "flex-end",
+              "label": "Bottom"
+            }
+          ],
+          "default": "flex-start",
+          "label": "Button vertical alignment",
+          "info": "Controls the vertical positioning of the buttons. Only applies when the section contains only buttons and no heading or text blocks."
         },
         {
           "type": "select",
