@@ -117,8 +117,8 @@
         if desktop_image_2 != blank
           assign image_class = "banner__media-image-half"
         endif
-        assign desktop_image_1_class = image_class | append: ' banner__image--desktop'
-        assign mobile_image_1_class = image_class | append: ' banner__image--mobile'
+        assign desktop_image_1_class = image_class | append: ' banner__image--desktop hide--on-mobile'
+        assign mobile_image_1_class = image_class | append: ' banner__image--mobile hide--on-desktop'
 
         if desktop_image_2 != blank
           assign sizes = "(min-width: 768px) 50vw, 100vw"
@@ -131,7 +131,17 @@
           assign mobile_image_height_1 = mobile_image_1.width | divided_by: mobile_image_1.aspect_ratio
         endif
       -%}
-
+      {%- if mobile_image_1 != blank -%}
+        {{ mobile_image_1 | image_url: width: 1500 | image_tag:
+          loading: 'lazy',
+          width: mobile_image_1.width,
+          height: mobile_image_height_1,
+          class: mobile_image_1_class,
+          sizes: mobile_sizes,
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          alt: mobile_image_1.alt | escape
+        }}
+      {%- endif -%}
       {%- if desktop_image_1 != blank -%}
         {{ desktop_image_1 | image_url: width: 1500 | image_tag:
           loading: 'lazy',
@@ -144,17 +154,6 @@
         }}
       {%- endif -%}
 
-      {%- if mobile_image_1 != blank -%}
-        {{ mobile_image_1 | image_url: width: 1500 | image_tag:
-          loading: 'lazy',
-          width: mobile_image_1.width,
-          height: mobile_image_height_1,
-          class: mobile_image_1_class,
-          sizes: mobile_sizes,
-          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
-          alt: mobile_image_1.alt | escape
-        }}
-      {%- endif -%}
     </div>
   {%- elsif has_second_image == false -%}
     <div class="banner__media media placeholder second-image">
@@ -176,25 +175,13 @@
         endif
         assign mobile_sizes = "100vw"
 
-        assign desktop_image_2_class = image_class_2 | append: ' banner__image--desktop'
-        assign mobile_image_2_class = image_class_2 | append: ' banner__image--mobile'
+        assign desktop_image_2_class = image_class_2 | append: ' banner__image--desktop hide--on-mobile'
+        assign mobile_image_2_class = image_class_2 | append: ' banner__image--mobile hide--on-desktop'
 
         if mobile_image_2 != blank and desktop_image_2 == blank
           assign image_height_2 = mobile_image_2.width | divided_by: mobile_image_2.aspect_ratio
         endif
       -%}
-
-      {%- if desktop_image_2 != blank -%}
-        {{ desktop_image_2 | image_url: width: 1500 | image_tag:
-          loading: 'lazy',
-          width: desktop_image_2.width,
-          height: image_height_2,
-          class: desktop_image_2_class,
-          sizes: sizes,
-          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
-          alt: desktop_image_2.alt | escape
-        }}
-      {%- endif -%}
 
       {%- if mobile_image_2 != blank -%}
         {{ mobile_image_2 | image_url: width: 1500 | image_tag:
@@ -205,6 +192,18 @@
           sizes: mobile_sizes,
           widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
           alt: mobile_image_2.alt | escape
+        }}
+      {%- endif -%}
+
+      {%- if desktop_image_2 != blank -%}
+        {{ desktop_image_2 | image_url: width: 1500 | image_tag:
+          loading: 'lazy',
+          width: desktop_image_2.width,
+          height: image_height_2,
+          class: desktop_image_2_class,
+          sizes: sizes,
+          widths: '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840',
+          alt: desktop_image_2.alt | escape
         }}
       {%- endif -%}
     </div>
@@ -456,6 +455,33 @@
     </div>
   </div>
   {% endif %}
+  <style>
+    #Banner-{{ section.id }} .banner--image .banner__image--mobile {
+      display: none;
+    }
+
+    #Banner-{{ section.id }} .banner--image .banner__image--desktop {
+      display: block;
+    }
+
+    #Banner-{{ section.id }} .banner--image .mobile-only-image {
+      display: none;
+    }
+
+    @media screen and (max-width: 767px) {
+      #Banner-{{ section.id }} .banner--image .banner__image--desktop {
+        display: none !important;
+      }
+
+      #Banner-{{ section.id }} .banner--image .banner__image--mobile {
+        display: block !important;
+      }
+
+      #Banner-{{ section.id }} .banner--image .mobile-only-image {
+        display: block !important;
+      }
+    }
+  </style>
 </div>
 
 
